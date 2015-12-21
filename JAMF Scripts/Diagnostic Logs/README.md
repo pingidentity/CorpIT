@@ -21,7 +21,6 @@ Machine Diagnostic Logs Upload
 6. Stop MYSQL 
 7. Edit my.cnf / my.ini. Make sure to create a backup first.
 > The my.cnf file may exist in one or more of the following locations in OS X and Linux:  
->
 >/etc/my.cnf  
 >/etc/mysql/my.cnf  
 >/usr/local/mysql/my.cnf
