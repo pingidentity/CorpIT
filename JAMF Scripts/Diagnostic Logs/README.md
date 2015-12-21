@@ -20,15 +20,13 @@ Machine Diagnostic Logs Upload
 5. Stop Tomcat on all instances
 6. Stop MYSQL 
 7. Edit my.cnf / my.ini. Make sure to create a backup first.
-> The my.cnf file may exist in one or more of the following locations in OS X and Linux:  
+
+>The my.cnf file may exist in one or more of the following locations in OS X and Linux:  
 >/etc/my.cnf  
 >/etc/mysql/my.cnf  
->/usr/local/mysql/my.cnf
-
-
->The my.ini file may exist in one or more of the following locations in Windows:
->
->C:\Program Files\MySQL\MySQL Server 5.6\my.ini 
+>/usr/local/mysql/my.cnf     
+>The my.ini file may exist in one or more of the following locations in Windows:    
+>C:\Program Files\MySQL\MySQL Server 5.6\my.ini   
 >C:\ProgramData\MySQL\MySQL Server 5.6\my.ini  
 >C:\my.ini
 
