@@ -30,7 +30,7 @@ Machine Diagnostic Logs Upload
 >C:\ProgramData\MySQL\MySQL Server 5.6\my.ini  
 >C:\my.ini
 
-8. Find the line: max_allowed_packet      = **16M** <--- Change this value to > 40. (there may be two places with this exact string. Put **#** before one of them)
+8. Find the line: max_allowed_packet      = **16M** <--- Change this value to > 200. (there may be two places with this exact string. Put **#** before one of them)
 9. Start MYSQL
 10. Start Tomcat on all instances
 11. Test
