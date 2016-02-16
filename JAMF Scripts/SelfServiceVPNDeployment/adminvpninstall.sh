@@ -6,6 +6,16 @@
 # Last modified: July 7, 2014
 # Brief Description: Overrides policies for admins to install ANY VPN
 ########################################################################
+#### adding part for jamf binary check - orignally written by Rich Trouton
+jamf_binary=`/usr/bin/which jamf`
+
+if [[ "$jamf_binary" == "" ]] && [[ -e "/usr/sbin/jamf" ]] && [[ ! -e "/usr/local/bin/jamf" ]]; then
+   jamf_binary="/usr/sbin/jamf"
+elif [[ "$jamf_binary" == "" ]] && [[ ! -e "/usr/sbin/jamf" ]] && [[ -e "/usr/local/bin/jamf" ]]; then
+   jamf_binary="/usr/local/bin/jamf"
+elif [[ "$jamf_binary" == "" ]] && [[ -e "/usr/sbin/jamf" ]] && [[ -e "/usr/local/bin/jamf" ]]; then
+   jamf_binary="/usr/local/bin/jamf"
+fi
 
 plist='locationtoyourplist'
 
@@ -14,7 +24,7 @@ CD="/usr/sbin/cocoaDialog.app/Contents/MacOS/CocoaDialog"
 #you may have a different location for cocoa
 else
 echo "CocoaDialog.app not found installing"
- /usr/sbin/jamf policy -trigger cocoa
+	$jamf_binary policy -trigger cocoa
 fi
 ########################################################################
 # Script
