@@ -1,19 +1,18 @@
 #!/bin/bash
 
 ########################################################################
-# Originally Created Created By: Andrina Kelly, andrina.kelly@bellmedia.ca
+# Originally Created Created By: Andrina Kelly
 # Modifications from scripts from Bryson Tyrrell 
 # Final by Ross Derewianko
 # Creation Date: April 2015
-# Last modified: April, 18 2015 
+# Last modified: Feb 16,2016
 # Brief Description: Gather diagnostic logs and submit to the JSS
 ########################################################################
-# CHECK TO SEE IF A VALUE WAS PASSED IN PARAMETER 4 AND, IF SO, ASSIGN TO "Basic_auth"
+# CHECK TO SEE IF A VALUE WAS PASSED IN PARAMETER 4 AND, IF SO, ASSIGN TO "basic_auth"
 if [ "$4" != "" ] && [ "$basic_auth" == "" ]; then
   basic_auth=$4
 fi
 
-FILE=`ls -ltr /var/tmp | tail -1 | awk '{print $9}'`
 jss=`defaults read /Library/Preferences/com.jamfsoftware.jamf.plist jss_url`
 serial=`/usr/sbin/system_profiler SPHardwareDataType | awk '/Serial Number/ {print $NF}'`
 
@@ -32,8 +31,10 @@ expect <<- DONE
   send -- "\r"
   expect eof
 DONE
+FILE=$(ls -ltr /var/tmp | tail -1 | awk '{print $9}' | grep "sysdiagnose")
 
 
-fileupload$(curl -X "POST" "$jss"JSSResource/fileuploads/computers/id/$machineid -F "file=@"/var/tmp/$FILE""\
+fileupload=$(curl -X "POST" "$jss"JSSResource/fileuploads/computers/id/$machineid -F "file=@/var/tmp/$FILE"\
   -H "Authorization: Basic $basic_auth")
+
 exit 0
