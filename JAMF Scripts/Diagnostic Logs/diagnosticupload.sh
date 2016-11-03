@@ -13,8 +13,8 @@ if [ "$4" != "" ] && [ "$basic_auth" == "" ]; then
   basic_auth=$4
 fi
 
-jss=`defaults read /Library/Preferences/com.jamfsoftware.jamf.plist jss_url`
-serial=`/usr/sbin/system_profiler SPHardwareDataType | awk '/Serial Number/ {print $NF}'`
+jss=$(defaults read /Library/Preferences/com.jamfsoftware.jamf.plist jss_url)
+serial=$(/usr/sbin/system_profiler SPHardwareDataType | awk '/Serial Number/ {print $NF}')
 
 #find the machines ID
 fullmachineinfo=$(curl "$jss"JSSResource/computers/serialnumber/"$serial" -H "Authorization: Basic $basic_auth")
