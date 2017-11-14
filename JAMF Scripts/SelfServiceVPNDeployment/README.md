@@ -1,4 +1,4 @@
-####Self Service VPN's
+#### Self Service VPN's
 
 Created By: Ross Derewianko  
 For Ping Identity Corporation 2014  
@@ -9,7 +9,7 @@ Last modified: March 27, 2014
 Self Service VPN's
 --------------------------------------------------------
 
-#####Installation.
+##### Installation.
 
 
 1. Install the Ea's making sure to edit the plist to a file location you'd prefer. This needs to be edited in all four files
@@ -28,7 +28,7 @@ Justdeployed.sh (if new deployment)
 
 --------------------------------------------------------	
 
-#####Extension Attributes
+##### Extension Attributes
 EA -checkforvpn.sh  
  Searches/checks for the plist and the values in VPN  
 EA - checkfornewlydeployedvpn.sh   
@@ -37,7 +37,7 @@ EA - checkfornewlydeployedvpn.sh
 
 --------------------------------------------------------	
 
-#####Policies
+##### Policies
 VPN - vpnDemo  
 Uses the script selfservicevpn.sh passing through ```<vpn name>``` in perameter value 4 and updates inventory.  
 Uses selfservicevpn.sh scoped to ongoing as the u ser may have to install the vpn on a loaner machine.  
@@ -47,7 +47,7 @@ Remove All Vpns
 Pops a value of vpnremoved into the VPN value. Casper removes vpn config.  
 
 --------------------------------------------------------	
-#####Scripts  
+##### Scripts  
 
 selfserviceinstallvpn.sh  
 This script is the main script for the vpn deployment. What it does, is read from the policy parameter 4, which is the vpn group name.  
@@ -69,13 +69,13 @@ If the file didn’t exist from the check above it writes the following
 	<string>yes</string> 
 ```	
 --------------------------------------------------------	
-#####Smart Groups  
+##### Smart Groups  
 
 Each VPN has a Smart group called VPNDEPLOY - vpnName
 The smart group is based on whats reported in the EA EA - checkforvpn.sh based on the reported ea, casper auto places that computer in said group.  
 
 --------------------------------------------------------	
-#####Configuration Profiles  
+##### Configuration Profiles  
 
 Each VPN has its own config profile, which is what casper pushes to the client through a secure connection via Apples push network.  
 
@@ -90,7 +90,7 @@ the username has a value of $USERNAME
 Each configuration profile is scoped to the smart group of VPNDEPLOY - vpnDemo which corresponds with the vpn group name above.  
 
 --------------------------------------------------------	
-#####User Flow  
+##### User Flow  
 
 User Flow for vpnDemo  
 Assumptions to base this will work off of:  
